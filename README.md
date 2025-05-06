@@ -1,4 +1,4 @@
-#Setup Virtual Environment
+Setup Virtual Environment
 
 Source venv/bin/activate
 
