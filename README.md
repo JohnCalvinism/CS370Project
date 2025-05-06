@@ -1,6 +1,10 @@
 Setup Virtual Environment
 
-Source venv/bin/activate
+Linux
+
+source venv/bin/activate
+
+Windows
 
 pip freeze > requirements.txt
 
