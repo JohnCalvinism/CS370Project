@@ -1,1 +1,13 @@
-curl -X POST http://192.168.X.X:5000/alert -H "Content-Type: application/json" -d '{"alert": "Test", "face_id": 99}'
+                try: 
+                    # Send the full image to the desktop server
+                    with open(full_filename, 'rb') as f:
+                        files = {'file': (full_filename, f, 'image/jpeg')}
+                        response = requests.post(alert_url, files=files)
+                    
+                    # Extract the filename from the server response
+                    if response.status_code == 200:
+                        filename = response.json().get('filename')
+                        image_url = f"http://192.x.x.x:5000/images/{filename}"  # Form the URL to view the image
+                        print(f"Image uploaded successfully: {image_url}")
+                except Exception as e: 
+                    print(f"Failed to send alert: {e}")
