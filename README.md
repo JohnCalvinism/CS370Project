@@ -22,6 +22,10 @@ def alert():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
+requirements.txt
+requests==2.26.0
+flask==2.0.1
+
 motion.py
 if not cap.isOpened():
         print("Error: Could not open camera.")
