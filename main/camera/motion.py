@@ -1,16 +1,25 @@
 import cv2
 import time
 import os
+import requests
 
 def main():
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened(): 
+        print("Error: Could not open camera.") 
+        exit()
+
+    print("Camera opened successfully. Press 'Esc' to exit.")
 
     prev_face = None
     prev_position = None
     face_counter = 0
     face_detected = False
     saved_images = []
+
+    alert_url = "http://localhost:5000/alert" # Replace with the desktop/rasp pi IP address
 
     while True:
         ret, frame = cap.read()
@@ -41,6 +50,13 @@ def main():
 
                 face_detected = True
                 new_face_detected = True
+
+                try: 
+                    response = requests.post(alert_url, json={"alert": "Face detected", "face_id": face_counter}) 
+                    print(f"Alert sent: {response.status_code}") 
+                except Exception as e: 
+                    print(f"Failed to send alert: {e}")
+
             else:
                 if prev_position and (abs(prev_position[0] - x) > 5 or abs(prev_position[1] - y) > 5):
                     color = (0, 0, 255)
