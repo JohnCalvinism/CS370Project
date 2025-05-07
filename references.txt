@@ -1,2 +1,3 @@
 https://raspberrypi-guide.github.io/programming/install-opencv.html
 https://raspberrypi-guide.github.io/electronics/using-usb-webcams
+https://www.geeksforgeeks.org/python-haar-cascades-for-object-detection/
