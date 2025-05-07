@@ -2,6 +2,8 @@ Setup Virtual Environment
 
 Linux
 
+python -m venv venv
+
 source venv/bin/activate
 
 pip freeze > requirements.txt
