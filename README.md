@@ -20,7 +20,7 @@ python
 
 For Server 
 
-python main/server/desktop_server.py
+python main/server/server.py
 
 For Pi
 
