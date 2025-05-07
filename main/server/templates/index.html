@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Motion Capture</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <h1>CS370 Final Project Motion Capture</h1>
+  </header>
+
+  <main class="container">
+    {% if image_filenames %}
+		<div>
+		</div>
+		<div class="image-container">
+			<h3>Uploaded Images:</h3>
+        <div class="image-navigation">
+		{% if current_index > 0 %}
+			<a href="/image/{{ current_index - 1 }}" class="arrow left-arrow">&#8592;</a>
+        {% endif %}
+		<img src="{{ url_for('static', filename='images/' + image_filenames[current_index]) }}" alt="Uploaded Image" style="max-width:500px;">
+		{% if current_index < (image_filenames | length) - 1 %}
+			<a href="/image/{{ current_index + 1 }}" class="arrow right-arrow">&#8594;</a>
+        {% endif %}
+        </div>
+		</div>
+	{% else %}
+		<h2>This page will update after an image is captured.</h2>
+    {% endif %}
+    <a href="https://github.com/JohnCalvinism/CS370Project" target="_blank" class="github-button">
+      View Project on GitHub
+    </a>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2025 CS370 Calvin Sopocy, Ashby Dietz, Ronan
+    </div>
+  </footer>
+
+</body>
+</html>
