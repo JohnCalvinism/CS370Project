@@ -18,6 +18,17 @@ image_filenames = []
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def cleanup():
+    for filename in os.listdir(IMAGES_FOLDER):
+        file_path = os.path.join(IMAGES_FOLDER, filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+            print(f"[DEBUG] Deleted: {file_path}")
+
+@app.before_first_request
+def before_first_request():
+    cleanup()
+
 @app.route('/')
 def index():
     current_index = 0 if len(image_filenames) > 0 else -1
