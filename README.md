@@ -8,15 +8,19 @@ pip freeze > requirements.txt
 
 pip install -r requirements.txt
 
+python3
+
 Windows
 
 python -m venv .venv
 
 pip install -r requirements.txt
 
+python
+
 For Server 
 
-
+python main/server/desktop_server.py
 
 For Pi
 
