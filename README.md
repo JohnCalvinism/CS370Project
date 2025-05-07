@@ -13,3 +13,11 @@ Windows
 python -m venv .venv
 
 pip install -r requirements.txt
+
+For Server 
+
+
+
+For Pi
+
+python3 main/camera/motion.py
